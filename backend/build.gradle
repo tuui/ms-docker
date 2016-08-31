@@ -1,0 +1,9 @@
+jar {
+    baseName = 'backend'
+}
+
+dependencies {
+    compile ("org.springframework.cloud:spring-cloud-starter-eureka:${springCloudVersion}")
+    compile ("org.springframework.boot:spring-boot-starter-web:${springCloudVersion}")
+    compile ("org.projectlombok:lombok:${lombokVersion}")
+}

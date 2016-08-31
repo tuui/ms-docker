@@ -1,0 +1,28 @@
+buildscript {
+    ext {
+        springCloudVersion = '1.1.5.RELEASE';
+        springBootVersion = "1.4.0.RELEASE"
+        lombokVersion = "1.16.6"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'spring-boot'
+
+    group = 'org.tuui'
+    version = '1.0'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+}

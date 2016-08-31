@@ -13,9 +13,3 @@ eureka:
   # https://github.com/spring-cloud/spring-cloud-netflix/issues/413
   instance:
     hostname: localhost
-
-  # prevent warning: RENEWALS ARE LESSER THAN THE THRESHOLD.THE SELF PRESERVATION MODE IS TURNED OFF.
-  # THIS MAY NOT PROTECT INSTANCE EXPIRY IN CASE OF NETWORK/OTHER PROBLEMS.
-  # https://groups.google.com/forum/#!topic/eureka_netflix/PH15yVWDN6w
-  server:
-    enable-self-preservation: true
