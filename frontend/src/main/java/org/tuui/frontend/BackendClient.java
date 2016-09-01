@@ -15,6 +15,5 @@ public interface BackendClient {
 	@Data
 	class Version {
 		private String backendVersion;
-		private String frontendVersion;
 	}
 }

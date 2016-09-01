@@ -1,28 +1,44 @@
 buildscript {
-    ext {
-        springCloudVersion = '1.1.5.RELEASE';
-        springBootVersion = "1.4.0.RELEASE"
-        lombokVersion = "1.16.6"
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("se.transmode.gradle:gradle-docker:${gradleDockerVersion}")
     }
 }
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'spring-boot'
+    apply plugin: 'docker'
 
     group = 'org.tuui'
     version = '1.0'
+
+    // Use basename as jar name (without version number)
+    jar {
+        archiveName = "${baseName}.jar"
+    }
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
     repositories {
         mavenCentral()
+    }
+
+    task buildDocker(type: Docker, dependsOn: build) {
+        applicationName = jar.baseName
+        dockerfile = file('src/main/docker/Dockerfile')
+        doFirst {
+            copy {
+                from jar
+                into stageDir
+            }
+        }
+        //  use dryRun in Windows because without that build fails since Docker Terminal refuses connecting
+        //  http://stackoverflow.com/questions/32047660/docker-for-windows-not-working
+        dryRun = true
     }
 }

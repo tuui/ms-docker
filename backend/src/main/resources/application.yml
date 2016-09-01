@@ -6,9 +6,20 @@ server:
 spring:
   application:
     name: backend-service
+  profiles:
+      active: dev
 
 # Discovery Server Access
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+---
+#Dev Docker profile
+spring:
+  profiles: dev_docker
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
