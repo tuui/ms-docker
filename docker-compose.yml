@@ -1,0 +1,22 @@
+version: '2'
+services:
+  discovery:
+    image: ms-dc
+    ports:
+      - "8761:8761"
+    container_name: discovery
+  be:
+    image: ms-be
+    ports:
+      - "8092:8092"
+    depends_on:
+      - discovery
+    container_name: be
+  fe:
+    image: ms-fe
+    ports:
+      - "8091:8091"
+    depends_on:
+      - discovery
+      - be
+    container_name: fe
