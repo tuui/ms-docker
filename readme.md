@@ -1,4 +1,4 @@
-#### Build Docker images
+## Build Docker images
 ### Build on Windows using "Docker Quickstart Terminal"
 * Build modules:
 <pre>
@@ -12,7 +12,7 @@ docker build -t ms-be .
 docker build -t ms-fe .
 </pre>
 
-#### Run Docker containers
+## Run Docker containers
 ### Start manually one by one
 <pre>
 docker run -d -p 8761:8761 --name discovery ms-dc
